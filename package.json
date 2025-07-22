@@ -1,0 +1,25 @@
+{
+  "name": "01_refactoring",
+  "version": "1.0.0",
+  "description": "Refactoring - Mitigando la deuda tecnica",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:dev":  "ts-node src/main.ts"
+  },
+  "keywords": [
+    "typescript",
+    "refactoring",
+    "principles of designs software",
+    "code smell",
+    "solid"
+  ],
+  "author": "Arthur Quezada",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/node": "^24.0.15",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

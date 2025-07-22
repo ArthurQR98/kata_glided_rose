@@ -1,0 +1,82 @@
+@startuml
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AgedBrie {
+   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality):
+   DOUBLE_QUALITY_DECREMENT_SELL_IN_THRESHOLD: number
+   update(): void
+}
+class BackstagePasses {
+   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality):
+   DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD: number
+   TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD: number
+   QUALITY_RESET_SELL_IN_THRESHOLD: number
+   update(): void
+}
+class Conjured {
+   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality):
+   update(): void
+}
+class GildedRose {
+   updateQuality(items?): void
+}
+class Item {
+   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality):
+   itemName: ItemName
+   itemSellIn: ItemSellIn
+   itemQuality: ItemQuality
+   update(): void
+   sellIn(): ItemSellIn
+   quality(): ItemQuality
+   decreaseSellIn(): void
+   hasToBeSoldInLessThan(days: number): boolean
+   increaseQuality(): void
+   decreaseQuality(): void
+   resetQuality(): void
+}
+class ItemFactory {
+   basedOn(rawName: string, rawSellIn: number, rawQuality: number): Item
+}
+class ItemName {
+   constructor(value: string):
+   AGED_BRIE: string
+   BACKSTAGE_PASSES: string
+   SULFURAS: string
+   CONJURED: string
+   value: string
+   isAgedBrie(): boolean
+   isBackstagePasses(): boolean
+   isSulfuras(): boolean
+   isConjured(): boolean
+}
+class ItemQuality {
+   constructor(value: number):
+   MAX_VALUE: number
+   MIN_VALUE: number
+   value: number
+   increase(): this
+   decrease(): this
+   reset(): ItemQuality
+}
+class ItemQualityOutOfRangeException {
+   constructor(message: string):
+}
+class ItemSellIn {
+   constructor(value: number):
+   value: number
+   decrease(): ItemSellIn
+   isLessThan(days: number): boolean
+}
+class Standard {
+   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality):
+   DOUBLE_QUALITY_DECREASE_SELL_IN_THRESHOULD: number
+   update(): void
+}
+
+AgedBrie                        -[#000082,plain]-^  Item
+BackstagePasses                 -[#000082,plain]-^  Item
+Conjured                        -[#000082,plain]-^  Item
+Standard                        -[#000082,plain]-^  Item
+@enduml
